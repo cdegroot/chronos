@@ -111,7 +111,8 @@ class MesosTaskBuilder @Inject()(val conf: SchedulerConfiguration) {
           if (job.container != Container() && !job.container.image.isEmpty) {
             val containerInfoBuilder = ContainerInfo.newBuilder()
             containerInfoBuilder.setImage(job.container.image)
-            job.container.options.zipWithIndex.foreach { case (option, i) => containerInfoBuilder.setOptions(i, option) }
+            containerInfoBuilder.clearOptions()
+            job.container.options.foreach { option => containerInfoBuilder.addOptions(option) }
             commandInfoBuilder.setContainer(containerInfoBuilder)
           }
           commandInfoBuilder

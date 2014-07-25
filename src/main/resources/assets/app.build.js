@@ -13,7 +13,7 @@
     'lessc-server'
   ],
   findNestedDependencies: true,
-  optimize: 'uglify',
+  optimize: 'none',
   optimizeCss: 'standard.keepLines',
   fileExclusionRegExp: /^\.|spec|tests/,
   generateSourceMaps: false,
